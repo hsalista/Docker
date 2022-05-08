@@ -1,0 +1,10 @@
+services:
+    os_test_service:
+        image: bourneagain/rest-api-sample:latest
+        ports:
+            - "8080:8080"
+    test_runner:
+        image: hsalista/mypytest7
+        command: python3 -m pytest -v test.py
+        depends_on:
+            - os_test_service
